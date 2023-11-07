@@ -45,8 +45,14 @@ print (takeoff_fuelflow)
 
 #-----------------------------------------------------------
 #gen graph
+
+"Initial Climb"
+initclimb_speed=wrap.initclimb_vcas()
+initclimb_rate=wrap.initclimb_vs()
+print(initclimb_speed, initclimb_rate)
+
 "Climb"
-climb_speed= wrap.initclimb_vcas()
+climb_speed= wrap.climb_const_vcas()
 climb_vertical_distance= wrap.climb_range()    #vertical km/s
 print(climb_speed, climb_vertical_distance)
 
