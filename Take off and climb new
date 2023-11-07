@@ -11,6 +11,9 @@ from openap import WRAP             # kinematic
 from openap import FuelFlow         # fuelflow
 from openap import Thrust           # thrust
 from openap import aero             # unit in SI unit
+#from mpl_toolkits.mplot3d.axes3d import Axes3D     #3D graph
+os.environ["PROJ_LIB"] = r"D:\ProgramData\Anaconda3\pkgs\proj4-5.2.0-h6538335_1006\Library\share"; #fixr
+from mpl_toolkits.basemap import Basemap
 
 #generate a excel
 #DF = pd.DataFrame(data)         
@@ -151,7 +154,35 @@ if sd =="None":
 
 
 
+"Graph"
+# Earth
+for i in range(0,330,20):
+    my_map = Basemap(projection='ortho', lat_0=0, lon_0=i, resolution='l', area_thresh=1000.0)
+    my_map.bluemarble()
+    my_map.etopo()
+    name=str(i)
+    path='/path/to/your/directory/'+name
+    plt.savefig(path+'.png')
+    plt.show()
+    plt.clf()
+    plt.cla()
+    plt.close() 
+    
+    
 
+# A histogram
+"""n = np.random.randn(100000)
+fig, axes = plt.subplots(1, 2, figsize=(12,4))
+
+axes[0].hist(n)
+axes[0].set_title("Default histogram")
+axes[0].set_xlim((min(n), max(n)))
+
+axes[1].hist(n, cumulative=True, bins=50)
+axes[1].set_title("Cumulative detailed histogram")
+axes[1].set_xlim((min(n), max(n)));  """
+
+#.
 
 
 
